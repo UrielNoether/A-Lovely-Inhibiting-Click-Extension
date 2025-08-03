@@ -7,18 +7,20 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-		"esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
     "allowJs": false,
     "removeComments": true,
     "sourceMap": true,
     "alwaysStrict": false,
     "skipLibCheck": true,
-		"allowSyntheticDefaultImports": true,
-		"noEmit": true,
-    "baseUrl": "src",
+    "allowSyntheticDefaultImports": true,
+    "noEmit": false,  // Changed from true to allow esbuild to emit
+    "baseUrl": "./",   // Changed from "src" to root
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["src/*"],
+      "@/modules/*": ["src/modules/*"],
+      "@/subscreens/*": ["src/subscreens/*"]
     }
-  },
+  }
 }
