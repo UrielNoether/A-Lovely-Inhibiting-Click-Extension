@@ -1,5 +1,6 @@
 # ALICE: A-Lovely-Inhibiting-Click-Extension
 Making a new custom lock, purely for fun
+This repository is not meant for distribution, and is only meant for testing purposes
 
 ### Bookmark
 javascript:(function(){
