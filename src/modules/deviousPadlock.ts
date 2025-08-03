@@ -84,7 +84,7 @@ function createDeviousPadlock(): void {
 	const assetGroup = AssetGroupGet("Female3DCG", "ItemMisc");
 	AssetAdd(assetGroup, deviousPadlock, AssetFemale3DCGExtended);
 	// @ts-ignore
-	AssetGet("Female3DCG", "ItemMisc", deviousPadlock.Name).Description = "Alice Padlock";
+	AssetGet("Female3DCG", "ItemMisc", deviousPadlock.Name).Description = "Devious Padlock";
 	InventoryAdd(Player, deviousPadlock.Name, "ItemMisc");
 }
 
