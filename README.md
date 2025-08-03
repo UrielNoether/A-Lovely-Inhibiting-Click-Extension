@@ -1,5 +1,5 @@
 # ALICE: A-Lovely-Inhibiting-Click-Extension
-Making a fun new custom lock for the Bondage Club
+Making a new custom lock, purely for fun
 
 ### Bookmark
 javascript:(function(){
