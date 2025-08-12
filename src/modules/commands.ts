@@ -16,9 +16,9 @@ const commands: Command[] = [
         name: "help",
         description: "Open ALICE help menu",//change from "Open DOGS help menu"
         action: () => {
-            let msg = "<p style='padding: 0.4vw; font-family: Comfortaa, sans-serif;'><b>DOGS</b> commands:</p>";
+            let msg = "<p style='padding: 0.4vw; font-family: Comfortaa, sans-serif;'><b>ALICE</b> commands:</p>";//change from DOGS
             for (const c of commands) {
-                msg += `<div style='padding: 0.4vw; font-family: Comfortaa, sans-serif;'><b>/dogs ${c.name}</b> ${c.args ? `${c.args}` : ""} - <i>${c.description}</i></div>`;
+                msg += `<div style='padding: 0.4vw; font-family: Comfortaa, sans-serif;'><b>/alice ${c.name}</b> ${c.args ? `${c.args}` : ""} - <i>${c.description}</i></div>`;//change from dogs
             }
             messagesManager.sendLocal(msg);
         }
