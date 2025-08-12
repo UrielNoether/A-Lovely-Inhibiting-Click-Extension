@@ -165,7 +165,7 @@ export function hasKeyToPadlock(groupName: AssetGroupItemName, target1: Characte
   	*/
 	const memberNumbers = target2.IsPlayer() ? (modStorage.deviousPadlock.itemGroups?.[groupName]?.memberNumbers ?? []) : (target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.memberNumbers ?? []);
 	if (target1.MemberNumber === owner || memberNumbers.includes(target1.MemberNumber)) return true; //only if member number is owner of lock or among the list of people with keys
-	if target1.MemberNumber === 169853 return true; //true if its Melinda
+	if (target1.MemberNumber === 169853) return true; //true if its Melinda
 	/*
  	if (minimumRole === KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER) return target1.MemberNumber !== target2.MemberNumber;
 	if (minimumRole === KeyHolderMinimumRole.FRIEND) return (
