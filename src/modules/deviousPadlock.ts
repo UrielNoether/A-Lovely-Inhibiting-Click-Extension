@@ -13,7 +13,7 @@ export const deviousPadlock: AssetDefinition.Item = {
 	Effect: [],
 	Extended: true,
 	IsLock: true,
-	Name: "DeviousPadlock",
+	Name: "PermanentPadlock",//changed from "DeviousPadlock"
 	Time: 10,
 	Value: 70,
 	Wear: false,
