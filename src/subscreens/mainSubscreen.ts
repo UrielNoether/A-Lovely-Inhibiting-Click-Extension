@@ -7,7 +7,7 @@ import { MOD_DATA, version } from "zois-core";
 
 export class MainSubscreen extends BaseSubscreen {
     get name(): string {
-        return "Devious Obligate Good Stuff";
+        return "A Lovely Inhibiting Click Extension"; //change from "Devious Obligate Good Stuff"
     }
 
     get previousSubscreen(): BaseSubscreen {
@@ -18,7 +18,7 @@ export class MainSubscreen extends BaseSubscreen {
         super.load();
         [
             new DeviousPadlockSubscreen(),
-            new RemoteControlSubscreen(),
+            //new RemoteControlSubscreen(),
             new MiscSubscreen()
         ].forEach((s, i) => {
             const btn = this.createButton({
@@ -36,7 +36,7 @@ export class MainSubscreen extends BaseSubscreen {
         });
 
         this.createButton({
-            text: `DOGS v${MOD_DATA.version}`,
+            text: `ALICE v${MOD_DATA.version}`, //change from `DOGS v${MOD_DATA.version}`
             anchor: "bottom-right",
             x: 80,
             y: 65,
