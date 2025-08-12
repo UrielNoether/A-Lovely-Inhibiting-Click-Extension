@@ -1,5 +1,6 @@
 import { BaseSubscreen } from "zois-core/ui";
-import icon from "@/images/settings-devious-padlock.png";
+//import icon from "@/images/settings-devious-padlock.png";
+import icon from "@/images/devious-padlock.png";
 import { modStorage, SavedItem } from "@/modules/storage";
 import { PutPadlockMinimumRole } from "@/modules/deviousPadlock";
 import { toastsManager } from "zois-core/popups";
@@ -15,11 +16,11 @@ const putPadlockMinimumRolesNames = {
 
 export class DeviousPadlockSubscreen extends BaseSubscreen {
     get name(): string {
-        return "Devious Padlock";
+        return "Permanent Padlock"; //change from "Devious Padlock"
     }
 
     get buttonText(): string {
-        return "Devious Padlock";
+        return "Permanent Padlock"; //change from "Devious Padlock"
     }
 
     get buttonIcon(): string {
