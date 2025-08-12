@@ -47,9 +47,9 @@ waitFor(() => typeof window.Player?.MemberNumber === "number").then(() => {
         loadDeviousPadlock();
         console.log(`Ready! v${getModVersion()}`);
         toastsManager.success({
-            title: `DOGS loaded`,
+            title: `ALICE loaded`, //change from 'DOGS loaded'
             message: `v${getModVersion()}`,
-            duration: 4000
+            duration: 12000 //change from 4000
         });
 
         if (isVersionNewer(getModVersion(), modStorage.version)) {
