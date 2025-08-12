@@ -577,8 +577,7 @@ export function loadDeviousPadlock(): void {
 				args[0] = "This looks like its locked by a permanent padlock, you are completely stuck.";//changed from devious padlock, you are totally helpless :3
 			} else {
 				args[0] = `This looks like its locked by a permanent padlock, ${getNickname(CurrentCharacter)} is completely stuck.`;//changed from devious padlock, ${getNickname(CurrentCharacter)} is totally helpless :3
-			} else {
-			}
+			} 
 		}
 		next(args);
 	});
