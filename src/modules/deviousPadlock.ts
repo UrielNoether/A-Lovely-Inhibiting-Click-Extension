@@ -117,11 +117,19 @@ export function inspectDeviousPadlock(target: Character, item: Item, itemGroup: 
 }
 
 export function canPutDeviousPadlock(groupName: AssetGroupItemName, target1: Character, target2: Character): boolean {
-	let storage: ModStorage;
-	if (target2.IsPlayer()) storage = modStorage;
-	else storage = target2.DOGS;
-	if (!storage?.deviousPadlock?.state) return;
-	const minimumRole = storage?.deviousPadlock?.putMinimumRole ?? PutPadlockMinimumRole.PUBLIC;
+	//let storage: ModStorage;
+	//if (target2.IsPlayer()) storage = modStorage;
+	//else storage = target2.DOGS;
+	//if (!storage?.deviousPadlock?.state) return;
+	//const minimumRole = storage?.deviousPadlock?.putMinimumRole ?? PutPadlockMinimumRole.PUBLIC;
+	//THIS IS NEW
+	if (target1.MemberNumber === target2.MemberNumber) return false;//unable on yourself
+	return ( //only whitelist or stronger
+		target2.WhiteList?.includes(target1.MemberNumber) ||
+		target1.IsInFamilyOfMemberNumber(target2.MemberNumber) || target1.IsLoverOfCharacter(target2) ||
+		target2.IsOwnedByCharacter(target1)
+	);
+	/*
 	if (target1.MemberNumber === target2.MemberNumber) return true;
 	if (minimumRole === PutPadlockMinimumRole.PUBLIC) return true;
 	if (minimumRole === PutPadlockMinimumRole.FRIEND) return (
@@ -140,6 +148,7 @@ export function canPutDeviousPadlock(groupName: AssetGroupItemName, target1: Cha
 		target1.IsLoverOfCharacter(target2) || target2.IsOwnedByCharacter(target1)
 	);
 	if (minimumRole === PutPadlockMinimumRole.OWNER) return target2.IsOwnedByCharacter(target1);
+ 	*/
 	return false;
 }
 
@@ -150,11 +159,12 @@ export function hasKeyToPadlock(groupName: AssetGroupItemName, target1: Characte
 		modStorage.deviousPadlock.itemGroups?.[groupName]?.owner
 		: target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.owner;
 	const minimumRole = target2.IsPlayer() ?
-		(modStorage.deviousPadlock.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER)
-		: (target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER);
+		(modStorage.deviousPadlock.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.WHITELIST)//change from KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER
+		: (target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.WHITELIST);//change from KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER
 	const memberNumbers = target2.IsPlayer() ? (modStorage.deviousPadlock.itemGroups?.[groupName]?.memberNumbers ?? []) : (target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.memberNumbers ?? []);
-	if (target1.MemberNumber === owner || memberNumbers.includes(target1.MemberNumber)) return true;
-	if (minimumRole === KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER) return target1.MemberNumber !== target2.MemberNumber;
+	if (target1.MemberNumber === owner || memberNumbers.includes(target1.MemberNumber)) return true; //only if member number is owner of lock or among the list of people with keys
+	/*
+ 	if (minimumRole === KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER) return target1.MemberNumber !== target2.MemberNumber;
 	if (minimumRole === KeyHolderMinimumRole.FRIEND) return (
 		//@ts-ignore
 		target1.FriendList?.includes(target2.MemberNumber) || target2.FriendList?.includes(target1.MemberNumber) ||
@@ -173,11 +183,13 @@ export function hasKeyToPadlock(groupName: AssetGroupItemName, target1: Characte
 	);
 	if (minimumRole === KeyHolderMinimumRole.LOVER) return target1.IsLoverOfCharacter(target2) || target2.IsOwnedByCharacter(target1);
 	if (minimumRole === KeyHolderMinimumRole.OWNER) return target2.IsOwnedByCharacter(target1);
-	return true;
+ 	*/
+	return false; //changed from true
 }
 
 export function canSetKeyHolderMinimumRole(target1: Character, target2: Character, minimumRole: KeyHolderMinimumRole): boolean {
-	if (target1.MemberNumber === target2.MemberNumber) return true;
+	/*
+ 	if (target1.MemberNumber === target2.MemberNumber) return true;
 	if (minimumRole === KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER) return true;
 	if (minimumRole === KeyHolderMinimumRole.FRIEND) return (
 		// @ts-ignore
@@ -197,6 +209,7 @@ export function canSetKeyHolderMinimumRole(target1: Character, target2: Characte
 	);
 	if (minimumRole === KeyHolderMinimumRole.LOVER) return target1.IsLoverOfCharacter(target2) || target2.IsOwnedByCharacter(target1);
 	if (minimumRole === KeyHolderMinimumRole.OWNER) return target2.IsOwnedByCharacter(target1);
+ 	*/
 	return false;
 }
 
