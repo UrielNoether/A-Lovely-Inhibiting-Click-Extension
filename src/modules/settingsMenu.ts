@@ -8,6 +8,11 @@ export function loadSettingsMenu(): void {
 		Identifier: "ALICE", //change from "DOGS"
 		ButtonText: "ALICE Settings", //change from "DOGS settings"
 		Image: slaveryImage,
+		style: { //THIS IS NEW
+    		width: "90px", 
+    		height: "90px",
+    		"image-rendering": "crisp-edges" // Prevents blurring
+  		},
 		click: () => {
 			getCurrentSubscreen()?.click();
 		},
