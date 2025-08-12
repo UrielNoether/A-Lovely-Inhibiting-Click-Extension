@@ -1,5 +1,6 @@
 import { BaseSubscreen, setSubscreen } from "zois-core/ui";
-import icon from "@/images/settings-devious-padlock.png";
+//import icon from "@/images/settings-devious-padlock.png";
+import icon from "@/images/devious-padlock.png";
 import { ModStorage, modStorage, syncStorage } from "@/modules/storage";
 import { canSetKeyHolderMinimumRole, changePadlockConfigurations, DeviousPadlockConfigurations, hashCombination, hasKeyToPadlock, KeyHolderMinimumRole } from "@/modules/deviousPadlock";
 import { dialogsManager, toastsManager } from "zois-core/popups";
