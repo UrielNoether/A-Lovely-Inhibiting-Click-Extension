@@ -5,11 +5,11 @@ import { modStorage } from "@/modules/storage";
 
 export class MiscSubscreen extends BaseSubscreen {
     get name(): string {
-        return "Misc";
+        return "Miscellaneous";//change from "Misc"
     }
 
     get buttonText(): string {
-        return "Misc";
+        return "Miscellaneous";//change from "Misc"
     }
 
     get buttonIcon(): string {
