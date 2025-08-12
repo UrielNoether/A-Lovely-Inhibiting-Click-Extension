@@ -14,7 +14,7 @@ interface Command {
 const commands: Command[] = [
     {
         name: "help",
-        description: "Open DOGS help menu",
+        description: "Open ALICE help menu",//change from "Open DOGS help menu"
         action: () => {
             let msg = "<p style='padding: 0.4vw; font-family: Comfortaa, sans-serif;'><b>DOGS</b> commands:</p>";
             for (const c of commands) {
@@ -25,9 +25,10 @@ const commands: Command[] = [
     },
     {
         name: "changelog",
-        description: "Show latest DOGS changelog",
+        description: "Show latest ALICE changelog",//"Show latest DOGS changelog"
         action: chatSendChangelog
     },
+    /*
     {
         name: "remote",
         description: "Use remote control",
@@ -83,7 +84,9 @@ const commands: Command[] = [
             DialogChangeMode("items");
             DialogChangeFocusToGroup(C, "ItemArms");
         }
+        
     }
+    */
 ];
 
 function getArgs(text: string): string[] {
@@ -93,8 +96,8 @@ function getArgs(text: string): string[] {
 export function loadCommands(): void {
     CommandCombine([
         {
-            Tag: "dogs",
-            Description: "Execute DOGS command",
+            Tag: "alice",//change from "dogs"
+            Description: "Execute ALICE command", //change from "Execute DOGS command"
             Action: (text) => {
                 const commandName = text.split(" ")[0];
                 const commandText = text.split(" ").slice(1).join(" ");
@@ -104,7 +107,7 @@ export function loadCommands(): void {
                     command.action(commandText);
                 } else {
                     messagesManager.sendLocal(
-                        "Unknown command, use <b>/dogs help</b> to view a list of all available commands."
+                        "Unknown command, use <b>/alice help</b> to view a list of all available commands."//change from "Unknown command, use <b>/dogs help</b> to view a list of all available commands."
                     );
                 }
             }
