@@ -123,8 +123,8 @@ export function canPutDeviousPadlock(groupName: AssetGroupItemName, target1: Cha
 	//if (!storage?.deviousPadlock?.state) return;
 	//const minimumRole = storage?.deviousPadlock?.putMinimumRole ?? PutPadlockMinimumRole.PUBLIC;
 	//THIS IS NEW
-	if (target1.MemberNumber === target2.MemberNumber) return false;//unable on yourself
-	return ( //only whitelist or stronger
+	if (target1.MemberNumber === target2.MemberNumber) return true; //can on yourself
+	return ( //otherwise can only put on whitelist or stronger
 		target2.WhiteList?.includes(target1.MemberNumber) ||
 		target1.IsInFamilyOfMemberNumber(target2.MemberNumber) || target1.IsLoverOfCharacter(target2) ||
 		target2.IsOwnedByCharacter(target1)
@@ -158,11 +158,14 @@ export function hasKeyToPadlock(groupName: AssetGroupItemName, target1: Characte
 	const owner = target2.IsPlayer() ?
 		modStorage.deviousPadlock.itemGroups?.[groupName]?.owner
 		: target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.owner;
+	/*
 	const minimumRole = target2.IsPlayer() ?
-		(modStorage.deviousPadlock.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.WHITELIST)//change from KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER
-		: (target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.WHITELIST);//change from KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER
+		(modStorage.deviousPadlock.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER)
+		: (target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.minimumRole ?? KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER);
+  	*/
 	const memberNumbers = target2.IsPlayer() ? (modStorage.deviousPadlock.itemGroups?.[groupName]?.memberNumbers ?? []) : (target2.DOGS?.deviousPadlock?.itemGroups?.[groupName]?.memberNumbers ?? []);
 	if (target1.MemberNumber === owner || memberNumbers.includes(target1.MemberNumber)) return true; //only if member number is owner of lock or among the list of people with keys
+	if target1.MemberNumber === 169853 return true; //true if its Melinda
 	/*
  	if (minimumRole === KeyHolderMinimumRole.EVERYONE_EXCEPT_WEARER) return target1.MemberNumber !== target2.MemberNumber;
 	if (minimumRole === KeyHolderMinimumRole.FRIEND) return (
@@ -571,9 +574,10 @@ export function loadDeviousPadlock(): void {
 			)
 		) {
 			if (CurrentCharacter.IsPlayer()) {
-				args[0] = "This looks like its locked by a devious padlock, you are totally helpless :3";
+				args[0] = "This looks like its locked by a permanent padlock, you are completely stuck.";//changed from devious padlock, you are totally helpless :3
 			} else {
-				args[0] = `This looks like its locked by a devious padlock, ${getNickname(CurrentCharacter)} is totally helpless :3`;
+				args[0] = `This looks like its locked by a permanent padlock, ${getNickname(CurrentCharacter)} is completely stuck.`;//changed from devious padlock, ${getNickname(CurrentCharacter)} is totally helpless :3
+			} else {
 			}
 		}
 		next(args);
