@@ -21,8 +21,8 @@ export class MainSubscreen extends BaseSubscreen {
         this.createText({ //THIS IS NEW
                 text: `A Lovely Inhibiting Click Extension`,
                 x: 100,
-                y: 60,
-                fontSize: 6
+                y: 80,//changed from 60
+                fontSize: 6//changed from 10
             }).style.cssText += "max-width: 85%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0.1em;";
         
         [
