@@ -20,7 +20,7 @@ export class DeviousPadlockSubscreen extends BaseSubscreen {
     }
 
     get buttonText(): string {
-        return "Permanent Padlock"; //change from "Devious Padlock"
+        return "Permanent Padlock"; // change from "Devious Padlock"
     }
 
     get buttonIcon(): string {
