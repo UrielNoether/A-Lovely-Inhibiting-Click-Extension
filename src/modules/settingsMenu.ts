@@ -5,8 +5,8 @@ import { BaseSubscreen, getCurrentSubscreen, setSubscreen } from "zois-core/ui";
 
 export function loadSettingsMenu(): void {
 	PreferenceRegisterExtensionSetting({
-		Identifier: "DOGS",
-		ButtonText: "DOGS Settings",
+		Identifier: "ALICE", //change from "DOGS"
+		ButtonText: "ALICE Settings", //change from "DOGS settings"
 		Image: slaveryImage,
 		click: () => {
 			getCurrentSubscreen()?.click();
