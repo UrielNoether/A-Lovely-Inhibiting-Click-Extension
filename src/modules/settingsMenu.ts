@@ -9,8 +9,8 @@ export function loadSettingsMenu(): void {
 		ButtonText: "ALICE Settings", //change from "DOGS settings"
 		Image: slaveryImage,
 		style: { //THIS IS NEW
-    		width: "90px", 
-    		height: "90px",
+    		width: "82px", 
+    		height: "82px",
     		"image-rendering": "crisp-edges" // Prevents blurring
   		},
 		click: () => {
