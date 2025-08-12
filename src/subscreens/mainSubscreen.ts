@@ -9,7 +9,7 @@ export class MainSubscreen extends BaseSubscreen {
     /*
     get name(): string {
         return "Devious Obligate Good Stuff";
-    }
+    } 
     */
 
     get previousSubscreen(): BaseSubscreen {
