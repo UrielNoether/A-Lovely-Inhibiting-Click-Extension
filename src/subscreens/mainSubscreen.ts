@@ -6,9 +6,11 @@ import { MiscSubscreen } from "./miscSubscreen";
 import { MOD_DATA, version } from "zois-core";
 
 export class MainSubscreen extends BaseSubscreen {
+    /*
     get name(): string {
-        return "A Lovely Inhibiting Click Extension"; //change from "Devious Obligate Good Stuff"
+        return "Devious Obligate Good Stuff";
     }
+    */
 
     get previousSubscreen(): BaseSubscreen {
         return null;
@@ -16,6 +18,13 @@ export class MainSubscreen extends BaseSubscreen {
 
     load(): void {
         super.load();
+        this.createText({ //THIS IS NEW
+                text: `A Lovely Inhibiting Click Extension`,
+                x: 100,
+                y: 60,
+                fontSize: 6
+            }).style.cssText += "max-width: 85%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0.1em;";
+        
         [
             new DeviousPadlockSubscreen(),
             //new RemoteControlSubscreen(),
