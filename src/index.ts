@@ -45,7 +45,7 @@ waitFor(() => typeof window.Player?.MemberNumber === "number").then(() => {
         initStorage();
         loadSettingsMenu();
         loadCommands();
-        loadRemoteControl();
+        //loadRemoteControl();
         loadDeviousPadlock();
         console.log(`Ready! v${getModVersion()}`);
         toastsManager.success({
