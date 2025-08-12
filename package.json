@@ -1,7 +1,7 @@
 {
-  //change from "name": "DOGS", "version": "2.0.1",
   "name": "ALICE", 
   "version": "1.0.0",
+  "__NOTE__": "change from "name": "DOGS", "version": "2.0.1","
   "main": "src/index.ts",
   "scripts": {
     "dev": "esbuild src/index.ts --bundle --minify --legal-comments=none --sourcemap --watch --outfile=dist/bundle.js --loader:.ts=ts --loader:.css=text --loader:.png=dataurl --loader:.svg=dataurl",
