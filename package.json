@@ -1,0 +1,26 @@
+{
+  "name": "ALICE", 
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "esbuild src/index.ts --bundle --minify --legal-comments=none --sourcemap --watch --outfile=dist/bundle.js --loader:.ts=ts --loader:.css=text --loader:.png=dataurl --loader:.svg=dataurl",
+    "build": "esbuild src/index.ts --bundle --minify --legal-comments=none --sourcemap --outfile=dist/bundle.js --loader:.ts=ts --loader:.css=text --loader:.png=dataurl --loader:.svg=dataurl"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "bc-stubs": "119.0.0-Beta.1",
+    "esbuild": "^0.25.9",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "zois-core": "^1.1.2"
+  },
+  "pnpm": {
+    "overrides": {}
+  }
+}

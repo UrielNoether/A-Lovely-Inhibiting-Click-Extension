@@ -1,0 +1,66 @@
+import { initStorage, modStorage, syncStorage } from "@/modules/storage";
+//import { loadRemoteControl } from "@/modules/remoteControl";
+import { loadSettingsMenu } from "@/modules/settingsMenu";
+import { loadCommands } from "@/modules/commands";
+import { loadDeviousPadlock } from "@/modules/deviousPadlock";
+import { registerCore, isVersionNewer, waitForStart, injectStyles } from "zois-core";
+import css from "./styles.css";
+import { toastsManager } from "zois-core/popups";
+import { messagesManager } from "zois-core/messaging";
+import { version } from "../package.json";
+
+
+export function getModVersion(): string {
+    return version;
+}
+
+export function chatSendChangelog(): void {
+    const text = `<div class="dogsChangelog"><b>ALICE</b> v${getModVersion()}<br><br>Changes: <ul><li>No changes yet, first mod version.</li><li>Hello, Alicia~</li></ul></div>`;
+    messagesManager.sendLocal(text);
+}
+
+const font = document.createElement("link");
+font.href = "https://fonts.googleapis.com/css2?family=Comfortaa";
+font.rel = "stylesheet";
+font.type = "text/css";
+document.head.append(font);
+
+waitForStart(() => {
+    registerCore({
+        name: "DOGS",
+        fullName: "Devious Obligate Great Stuff",
+        key: "DOGS",
+        version: getModVersion(),
+        repository: "https://github.com/FurryZoi/Devious-Obligate-Great-Stuff.git",
+        fontFamily: "Comfortaa"
+    });
+
+    injectStyles(css);
+
+    initStorage();
+        loadSettingsMenu();
+        loadCommands();
+        loadDeviousPadlock();
+        console.log(`Ready! v${getModVersion()}`);
+        toastsManager.success({
+            title: `ALICE loaded`,
+            message: `v${getModVersion()}`,
+            duration: 4000
+        });
+
+    if (isVersionNewer(getModVersion(), modStorage.version)) {
+        if (modStorage.misc.autoShowChangelog ?? true) {
+            if (ServerPlayerIsInChatRoom()) {
+                modStorage.version = getModVersion();
+                syncStorage();
+                chatSendChangelog();
+            } else {
+                ServerSocket.once("ChatRoomSync", () => {
+                    modStorage.version = getModVersion();
+                    syncStorage();
+                    chatSendChangelog();
+                });
+            }
+        }
+    }
+});
