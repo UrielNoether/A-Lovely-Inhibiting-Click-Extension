@@ -457,7 +457,7 @@ export class InspectDeviousPadlockSubscreen extends BaseSubscreen {
                             x: 100,
                             y: 200,
                             width: 800,
-                            height: 750,
+                            height: 650,
                             value: this.padlockSettings.keyHolders.memberNumbers,
                             numbersOnly: true,
                             isDisabled: () => !this.canEdit(),
