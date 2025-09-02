@@ -31,7 +31,7 @@ const commands: Command[] = [
     {
         name: "safeword",
         description: "Emergency safeword command which resets all ALICE settings",
-        action: () => {
+        action: (text: string) => {
             Object.keys(modStorage.deviousPadlock.itemGroups).forEach((k: AssetGroupItemName) => {
                 modStorage.deviousPadlock.itemGroups[k] = Object.fromEntries(
                     ["owner", "item"].map((n) => [n, modStorage.deviousPadlock.itemGroups[k][n]])
