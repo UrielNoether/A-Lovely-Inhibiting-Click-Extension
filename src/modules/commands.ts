@@ -42,11 +42,11 @@ const commands: Command[] = [
                 };
             });
             
-            messagesManager.sendLocal("<div style='color: #ff4444; font-weight: bold;'>ALICE safeword activated! All settings have been reset.</div>");
+            messagesManager.sendLocal("<div style='color: #ff4444; font-weight: bold;'>ALICE safeword activated! All settings have been reset to defaults.</div>");
             
             toastsManager.success({
-                title: "Safeword Activated",
-                message: "All ALICE settings have been reset to defaults",
+                title: "Safeword activated!",
+                message: "All settings have been reset to defaults.",
                 duration: 4500
             });
             syncStorage();
