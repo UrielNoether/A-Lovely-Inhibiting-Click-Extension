@@ -30,7 +30,7 @@ export class DeviousPadlockSubscreen extends BaseSubscreen {
     load(): void {
         super.load();
         this.createCheckbox({
-            text: "Enable the padlock. WARNING! Once enabled, it is enabled permanently!",
+            text: "Enable the padlock. WARNING! Checking this box cannot be undone!",
             x: 100,
             y: 300,
             isChecked: modStorage.deviousPadlock.state,
@@ -43,7 +43,7 @@ export class DeviousPadlockSubscreen extends BaseSubscreen {
         this.createText({
             text: "This padlock is designed such a way that there is absolutely no way to remove it, except through unlocking by either the owner of the padlock (the person that placed it) or any of the players listed as also having the keys.",
             x: 900,
-            y: 250,
+            y: 600,
             width: 800,
             withBackground: true,
             padding: 2
