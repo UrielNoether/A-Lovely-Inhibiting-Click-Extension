@@ -65,7 +65,7 @@ export class DeviousPadlockSubscreen extends BaseSubscreen {
             padding: 3,
             width: 600,
             icon: "Icons/ServiceBell.png",
-            isDisabled: () => True,
+            isDisabled: () => Player.GetDifficulty() !== 0,
             onClick: () => {
                 Object.keys(modStorage.deviousPadlock.itemGroups).forEach((k: AssetGroupItemName) => {
                     modStorage.deviousPadlock.itemGroups[k] = Object.fromEntries(
@@ -79,5 +79,7 @@ export class DeviousPadlockSubscreen extends BaseSubscreen {
                     message: "Devious padlocks configurations have been successfully reset",
                     duration: 4500
                 });
+            }
+        });
     }
 }
