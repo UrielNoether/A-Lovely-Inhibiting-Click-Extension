@@ -1,7 +1,7 @@
 import { BaseSubscreen } from "zois-core/ui";
 //import icon from "@/images/settings-devious-padlock.png";
 import icon from "@/images/devious-padlock.png";
-import { modStorage, SavedItem } from "@/modules/storage";
+import { modStorage, syncStorage, SavedItem } from "@/modules/storage";
 import { PutPadlockMinimumRole } from "@/modules/deviousPadlock";
 import { toastsManager } from "zois-core/popups";
 
@@ -35,9 +35,17 @@ export class DeviousPadlockSubscreen extends BaseSubscreen {
             y: 300,
             isChecked: modStorage.deviousPadlock.state,
             isDisabled: modStorage.deviousPadlock.state,
-            onChange() {
-                modStorage.deviousPadlock.state = true;
-            },
+            onChange: (checked: boolean) => {
+                if (checked) {
+                    modStorage.deviousPadlock.state = true;
+                    syncStorage(); 
+                    
+                    this.updateCheckbox({
+                        isDisabled: true,
+                        isChecked: true
+                    });
+                }
+            }
         });
 
         this.createText({
