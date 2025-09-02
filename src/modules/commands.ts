@@ -15,7 +15,7 @@ const commands: Command[] = [
     {
         name: "help",
         description: "Open ALICE help menu",
-        action: () => {
+        action: (text: string) => {
             let msg = "<p style='padding: 0.4vw; font-family: Comfortaa, sans-serif;'><b>ALICE</b> commands:</p>";
             for (const c of commands) {
                 msg += `<div style='padding: 0.4vw; font-family: Comfortaa, sans-serif;'><b>/alice ${c.name}</b> ${c.args ? `${c.args}` : ""} - <i>${c.description}</i></div>`;
@@ -50,7 +50,7 @@ const commands: Command[] = [
             });
             syncStorage();
         }
-    }
+    },
 ];
 
 function getArgs(text: string): string[] {
